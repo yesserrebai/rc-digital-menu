@@ -3,11 +3,12 @@ import path from 'path';
 const app = express();
 import { fileURLToPath } from 'url';
 import { dirname } from 'path';
+import 'dotenv/config';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
-app.listen(4000, () => {
-  console.log('listenning on 4000');
+app.listen(process.env.PORT || 80, () => {
+  console.log(`listening on port ${process.env.PORT}`);
 });
 app.set('view engine', 'pug');
 app.set('views', path.join(__dirname, './views'));

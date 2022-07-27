@@ -1,7 +1,6 @@
 import express from 'express';
 import path from 'path';
 const app = express();
-import fs from 'fs';
 import { fileURLToPath } from 'url';
 import { dirname } from 'path';
 
@@ -15,9 +14,10 @@ app.set('views', path.join(__dirname, './views'));
 app.use(express.static(path.join(__dirname, 'public')));
 try {
   app.get('/:name', (req, res) => {
-    let restoName = req.params.name;
+    //let restoName = req.params.name;
     return res.status(200).render('index');
   });
 } catch (e) {
   console.log(e);
+  throw new Error(e.message);
 }
